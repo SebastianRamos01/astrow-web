@@ -1,0 +1,19 @@
+---
+const { id, name, price, imageUrl, style } = Astro.props;
+---
+
+<article class={`relative max-h-[632px] w-full overflow-hidden cursor-pointer ${style}`}>
+    <div class="h-full w-full relative aspect-4/6 md:aspect-7/11">
+        <img
+            class="object-cover h-full w-full absolute hover:scale-105 transition"
+            src={`images/${imageUrl}`} alt={name}>
+    </div>
+    <div class="absolute bottom-0 w-full bg-white h-12 flex flex-col justify-center pr-2">
+        <p class="truncate">
+            {name}
+        </p>
+        <p>
+            {price}
+        </p>
+    </div>
+</article>

@@ -1,0 +1,28 @@
+---
+import { ProductsMen } from "../data/productsMen";
+import { ProductsWomen } from "../data/productsWomen";
+import ProductCard from "./ProductCard.astro";
+
+const featuredProducts = [
+    ...ProductsMen.filter((product) => product.featured),
+    ...ProductsWomen.filter((product) => product.featured),
+];
+
+---
+
+
+<section class="md:py-[4.5rem]">
+    <h2 class="py-5">
+        New Autumn Collection 2025
+    </h2>
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-10">
+        {featuredProducts.map((el, i) => (
+            <ProductCard 
+                id={el.id} 
+                name={el.name} 
+                price={el.price} 
+                imageUrl={el.img}
+                style={`${i === 1 || i === 2 ? '' : 'col-span-2 md:col-span-1'}`} />
+        ))}
+    </ul>
+</section>

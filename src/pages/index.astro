@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductList from '../components/ProductsList.astro'
+import MenList from '../components/MenList.astro';
+import WomenList from '../components/WomenList.astro';
+import Footer from '../components/Footer.astro';
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<main class="font-roboto font-light text-[#1e1e1e] uppercase text-xs mx-5 lg:mx-20">
+		<section class="h-[84dvh] relative md:m-[4rem] flex justify-center">
+			<div class="flex justify-center">
+				<div class="flex flex-col size-full justify-center items-end">
+					<div class="w-full h-3/4 top-1/2 left-1/2 transform">
+						<img 
+							class="object-cover size-full"
+							src="/images/Pexels Photo by EVG Kowalievska.png" alt="banner-img">
+					</div>
+					<div class="bottom-1/12 w-72 right-0  py-2 flex flex-col">
+						<h1>New Autumn Collection 2025</h1>
+						<p>Simply click anywhere in the paragraph or heading text and start typing.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<ProductList />
+		<MenList />
+		<WomenList />
+		<Footer />
+	</main>
+</Layout>

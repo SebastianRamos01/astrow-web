@@ -2,13 +2,13 @@
 const { id, name, price, imageUrl, style } = Astro.props;
 ---
 
-<article class={`relative max-h-[632px] w-full overflow-hidden cursor-pointer ${style}`}>
-    <div class="h-full w-full relative aspect-4/6 md:aspect-7/11">
+<article class={`flex flex-col justify-end max-h-[632px] w-full overflow-hidden cursor-pointer ${style}`}>
+    <div class=" w-full h-auto aspect-4/6 md:aspect-9/12 overflow-hidden">
         <img
-            class="object-cover h-full w-full absolute hover:scale-105 transition"
+            class="object-cover h-full w-full hover:scale-105 transition"
             src={`images/${imageUrl}`} alt={name}>
     </div>
-    <div class="absolute bottom-0 w-full bg-white h-12 flex flex-col justify-center pr-2">
+    <div class="w-full bg-white h-12 flex flex-col justify-center pr-2 text-[0.70rem] font-normal">
         <p class="truncate">
             {name}
         </p>

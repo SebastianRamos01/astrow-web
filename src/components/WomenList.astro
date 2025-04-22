@@ -6,10 +6,10 @@ const firstsProducts = ProductsWomen.slice(0, 4)
 const firsts3Products = ProductsWomen.slice(0, 3)
 ---
 
-<section class="my-5 md:my-[4.5rem] relative">
-    <div class="py-5 md:py-[4rem] md:absolute top-0 w-full">
+<section class="mx-5 md:mx-10 my-8 relative">
+    <div class="py-3 w-full">
         <div class="flex justify-between">
-            <h2>
+            <h2 class="font-bold">
                 Women Autumn Collection 2025
             </h2>
             <div>See Full Collection</div>
@@ -25,14 +25,14 @@ const firsts3Products = ProductsWomen.slice(0, 3)
                 style={`${i === 1 ? 'md:col-span-4' : 'col-span-1 md:col-span-3 md:h-9/12'}`} />
         ))}
     </ul>
-    <ul class="hidden md:grid grid-cols-2 md:grid-cols-10 place-items-end gap-3 md:gap-14">
-        {firsts3Products.map((el, i) => (
+    <ul class="hidden md:grid grid-cols-2 md:grid-cols-12 place-items-end gap-3 md:gap-4">
+        {ProductsWomen.map((el, i) => (
             <ProductCard 
                 id={el.id} 
                 name={el.name} 
                 price={el.price} 
                 imageUrl={el.img}
-                style={`${i === 1 ? 'md:col-span-4' : 'col-span-1 md:col-span-3 md:h-9/12'}`} />
+                style={`${i < 3 ? 'md:col-span-4' : 'col-span-1 md:col-span-3'}`} />
         ))}
     </ul>
 </section>

@@ -1,14 +1,12 @@
 <header class="fixed top-0 w-full font-roboto uppercase text-[0.7rem] z-10 bg-white max-w-[1440px]">
     <div class="flex justify-between h-14 items-center px-5 md:px-10 z-10 relative shadow-sm">
         <ul class="flex gap-4">
-            <li id="nav-toggle" class="flex gap-1 items-center">
-                <div>
-                    <button class="flex justify-center items-center">
-                        <svg class="w-7 h-7 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1" d="M5 7h14M5 12h14M5 17h14"/>
-                        </svg> 
-                    </button>
-                </div>
+            <li id="nav-toggle" class="flex gap-1 items-center cursor-pointer">
+                <button class="flex justify-center items-center cursor-pointer">
+                    <svg class="w-7 h-7 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="1" d="M5 7h14M5 12h14M5 17h14"/>
+                    </svg> 
+                </button>
                 <div class="hidden md:block">
                     Menu
                 </div>
@@ -50,60 +48,33 @@
             </li>
         </ul>
     </div>
-    <nav id="nav-cont" class="flex-col justify-between bg-white mx-5 h-[100dvh] -translate-y-14 pt-14 hidden">
-        <ul class="flex gap-5 text-xs my-5">
-            <li class="font-black underline">Men</li>
-            <li>Women</li>
-            <li>Fall 2025</li>
-        </ul>
-        <div class="flex flex-col justify-between h-full mt-10">
-            <ul class="flex gap-5 flex-wrap mr-28">
-                <li>Shirts</li>
-                <li>Polos</li>
-                <li>Sweaters & Cardigans</li>
-                <li>Hoodies</li>
-                <li>Jackets</li>
-                <li>Coats</li>
-                <li>Shorts</li>
-                <li>Jeans</li>
-                <li>Accessories</li>
-                <li>Footwear</li>
-            </ul>
-            <ul class="grid grid-cols-6 gap-2">
-                <li class="col-span-3">
-                    <img src="images/Pexels Photo by Chichebe Chidiebere.png" alt="">
-                </li>
-                <li class="col-span-3">
-                    <img src="images/Pexels Photo by Reza Kargar.png" alt="">
-                </li>
-            </ul>
-        </div>
-        <div class="hidden">
-            <ul class="flex gap-5 flex-wrap mr-28">
-                <li>Tops</li>
-                <li>Shirts</li>
-                <li>Sweaters & Cardigans</li>
-                <li>Hoodies & Sweatshirts</li>
-                <li>Dresses</li>
-                <li>Coats</li>
-                <li>Skirts</li>
-                <li>Trousers</li>
-                <li>Accessories</li>
-                <li>Footwear</li>
-            </ul>
-            <ul class="grid grid-cols-6">
-                <li class="col-span-3">
-                    <img src="images/Pexels Photo by Ron Lach.png" alt="">
-                </li>
-                <li class="col-span-3">
-                    <img src="images/Pexels Photo by Konstantin Mishchenko.png" alt="">
-                </li>
-            </ul>
+    <nav id="nav-cont" class="bg-white mx-5 md:mx-10 h-[100dvh] md:h-1/2 -translate-y-14 md:-translate-y-0 pt-14 md:pt-0 hidden">
+        <div class="flex flex-col md:flex-row justify-between h-full w-full">
+            <div class="flex flex-col gap-5">
+                <ul id="main-categories" class="flex gap-5 text-xs my-5">
+                    <li data-category="men" class="cursor-pointer">Men</li>
+                    <li data-category="women" class="cursor-pointer">Women</li>
+                    <li>Fall 2025</li>
+                </ul>
+                <ul id="sub-categories" class="flex gap-5 flex-wrap mr-20 lg:mr-98">
+                </ul>
+            </div>
+            <div>
+                <ul class="grid grid-cols-6 gap-2 my-5">
+                    <li class="col-span-3 max-h-[45dvh] overflow-hidden">
+                        <img src="images/Pexels Photo by Chichebe Chidiebere.png" alt="menu-img" class="size-full object-cover">
+                    </li>
+                    <li class="col-span-3 max-h-[45dvh] overflow-hidden">
+                        <img src="images/Pexels Photo by Reza Kargar.png" alt="menu-img" class="size-full object-cover">
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
 
 <script>
+    //* Toggle the dropdown menu *//
     const navContainer = document.getElementById('nav-cont')
     const menuToggle = document.getElementById('nav-toggle')
     
@@ -118,4 +89,82 @@
       navContainer?.classList.add('hidden');
     }
   });
+
+  //* Toogle the list of categories *//
+  const  categories: Record<'men' | 'women', string[]> = {
+    men: ["Shirts", "Polos", "Sweaters & Cardigans", "Hoodies", "Jackets", "Coats", "Shorts", "Jeans", "Accessories", "Footwear"],
+    women: ["Tops", "Shirts", "Sweaters & Cardigans", "Hoodies & Sweetshirts", "Dresses", "Coats", "Skirts", "Trousers", "Accessories", "Footwear"]
+  };
+
+  const images: Record<'men' | 'women', string[]> = {
+    men: [
+        "images/Pexels Photo by Chichebe Chidiebere.png",
+        "images/Pexels Photo by Reza Kargar.png"
+    ],
+    women: [
+        "images/Pexels Photo by Ron Lach.png",
+        "images/Pexels Photo by Konstantin Mishchenko.png"
+    ]
+};
+
+  const mainCategories = document.getElementById('main-categories');
+  const subCategories = document.getElementById('sub-categories');
+  const imgElements = document.querySelectorAll<HTMLImageElement>('div > ul.grid > li img');
+
+  // 👉 Función para actualizar subcategorías
+function updateSubCategories(selected: keyof typeof categories) {
+  if (!subCategories) return;
+
+  // Limpiamos
+  subCategories.innerHTML = '';
+
+  // Agregamos nuevas subcategorías
+  categories[selected].forEach((item) => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    subCategories.appendChild(li);
+  });
+}
+
+// Función para actualizar estilos de selección
+function updateSelectedStyle(selectedElement: HTMLElement) {
+  const allItems = mainCategories?.querySelectorAll('li');
+  allItems?.forEach((li) => li.classList.remove('underline'));
+  selectedElement.classList.add('underline');
+}
+
+function updateImages(selected: keyof typeof images) {
+  imgElements.forEach((img, index) => {
+    const src = images[selected][index];
+    if (src) {
+      img.src = src;
+    }
+  });
+}
+
+// 👉 Inicializamos con "men" seleccionado
+if (mainCategories) {
+    const defaultCategory: keyof typeof categories = 'men';
+    const defaultElement = mainCategories.querySelector(`[data-category="${defaultCategory}"]`) as HTMLElement;
+
+  if (defaultElement) {
+    updateSubCategories(defaultCategory);
+    updateSelectedStyle(defaultElement);
+    updateImages(defaultCategory);
+  }
+
+  mainCategories.addEventListener('click', (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+
+    if (target.tagName === 'LI') {
+      const selectedCategory = target.getAttribute('data-category') as keyof typeof categories;;
+
+      if (selectedCategory && categories[selectedCategory]) {
+        updateSubCategories(selectedCategory);
+        updateSelectedStyle(target);
+        updateImages(selectedCategory);
+      }
+    }
+  });
+}
 </script>
